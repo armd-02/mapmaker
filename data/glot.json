@@ -28,8 +28,8 @@
         "en": "Terms of Use for Maps"
     },
     "licence_message": {
-        "ja": "地図は <a href=\"https://creativecommons.org/licenses/by/4.0/deed.ja\" target='_blank'>CC BY 4.0</a> ライセンスで提供します。<br>簡単に書くと、以下の条件を守る限り商用も含めて自由に使えます。<br><ul class='mt-3'><li>表示:「© OpenStreetMap contributors」を地図の何処かに表示すること</li></li></ul>上記の条件を守れば、商用利用も含めて自由に使えます。<br>なお、マップ作成時のURLのみをログに記録しています。",
-        "en": "Maps are provided under a <a href=\"https://creativecommons.org/licenses/by/4.0/\" target='_blank'>CC BY 4.0</a> license.<br>In brief, you can use it freely, including for commercial purposes, as long as you keep the following conditions.<br><ul class='mt-3'><li>View: place \"© OpenStreetMap contributors\" somewhere on the map crisis</li></ul>You can use it freely, including commercial use, as long as you comply with the above conditions.<br>Only the URL at the time of map creation is logged."
+        "ja": "地図は <a href=\"https://creativecommons.org/licenses/by/4.0/deed.ja\" target='_blank'>CC BY 4.0</a> ライセンスで提供します。<br>簡単に書くと、以下の条件を守る限り商用も含めて自由に使えます。<br><ul class='mt-3'><li>表示:「© OpenStreetMap」を地図の何処かに表示すること</li></li></ul>上記の条件を守れば、商用利用も含めて自由に使えます。<br>なお、マップ作成時のURLのみをログに記録しています。",
+        "en": "Maps are provided under a <a href=\"https://creativecommons.org/licenses/by/4.0/\" target='_blank'>CC BY 4.0</a> license.<br>In brief, you can use it freely, including for commercial purposes, as long as you keep the following conditions.<br><ul class='mt-3'><li>View: place \"© OpenStreetMap\" somewhere on the map crisis</li></ul>You can use it freely, including commercial use, as long as you comply with the above conditions.<br>Only the URL at the time of map creation is logged."
     },
     "more_message": {
         "ja": "<hr>道路や建物が無い時は<a href=\"https://wiki.openstreetmap.org/wiki/JA:%E5%88%9D%E5%BF%83%E8%80%85%E3%82%AC%E3%82%A4%E3%83%89\" target='_blank'>OpenStreetMapを編集</a>してみてください。<br>描いた地図は様々に活用され将来に残ります。",
@@ -44,7 +44,7 @@
         "en": "(TEST)Acquisition Date: "
     },
     "makemap": {
-        "ja": "ここのマップを作る",
+        "ja": "マップを作る",
         "en": "Make a map of this place"
     },
     "controlmenu": {
@@ -68,12 +68,12 @@
         "en": "Please enter the exact name of the town from the state to the town."
     },
     "morezoom": {
-        "ja": "地図を作るにはズームしてください。",
-        "en": "Zoom in to create a map."
+        "ja": "もっとズームが必要です",
+        "en": "Please zoom in more"
     },
     "morezoom2": {
-        "ja": "ズームすると<br />地物が増えます。",
-        "en": "When you zoom in,<br />will see more objects."
+        "ja": "ズームすると地物が増えます。",
+        "en": "When you zoom in,will see more objects."
     },
     "custommode": {
         "ja": "編集中（ロック）",
@@ -132,8 +132,8 @@
         "en": "Loading... Please wait a moment."
     },
     "restart_title": {
-        "ja": "データを消してやり直す",
-        "en": "Clear data and restart."
+        "ja": "リセット",
+        "en": "Reset"
     },
     "location": {
         "ja": "現在地を表示",
@@ -160,7 +160,7 @@
         "en": "The type of data you specified was not found. Please mapping it."
     },
     "area_select": {
-        "ja": "A4(縦横)サイズ指定",
+        "ja": "用紙サイズ指定",
         "en": "range selection"
     },
     "area_deselect": {
@@ -175,6 +175,14 @@
         "ja": "A4横サイズ",
         "en": "A4 landscape size"
     },
+    "area_A3": {
+        "ja": "A3縦サイズ",
+        "en": "A3 portrait size"
+    },
+    "area_A3_landscape": {
+        "ja": "A3横サイズ",
+        "en": "A3 landscape size"
+    },
     "color_palette": {
         "ja": "カラーパレット",
         "en": "color palette"
@@ -186,6 +194,22 @@
     "marker_wikipedia": {
         "ja": "Wikipedia記事",
         "en": "Wikipedia article"
+    },
+    "panelLands": {
+        "ja": "土地利用",
+        "en": "Land use"
+    },
+    "panelWays": {
+        "ja": "道路・線路",
+        "en": "Highway/Railway"
+    },
+    "panelWaters": {
+        "ja": "水系",
+        "en": "Water"
+    },
+    "panel": {
+        "ja": "土地利用",
+        "en": "Land use"
     },
     "marker_shop": {
         "ja": "店舗・施設",
@@ -231,6 +255,10 @@
         "ja": "背景色",
         "en": "Background"
     },
+    "menu_sea": {
+        "ja": "海",
+        "en": "Sea"
+    },
     "menu_park": {
         "ja": "各種公園",
         "en": "Park"
@@ -251,9 +279,13 @@
         "ja": "庭・草原",
         "en": "Garden"
     },
-    "menu_river": {
+    "menu_waterArea": {
+        "ja": "池・川岸",
+        "en": "Water area"
+    },
+    "menu_waterLine": {
         "ja": "水路・川",
-        "en": "Waterway"
+        "en": "Water line"
     },
     "menu_forest": {
         "ja": "森・田畑",
