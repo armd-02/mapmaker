@@ -111,8 +111,8 @@
             "timer": 2000
         },
         "credit": {
-            "text": "© OpenStreetMap contributors",
-            "size": 12,
+            "text": "© OpenStreetMap",
+            "size": 9, // 単位:pt
             "anchor": "start",
             "font": "Helvetica"
         },
@@ -138,7 +138,7 @@
     "menu": [
         {
             "glot-model": "licence_title",
-            "linkto": "javascript:Mapmaker.licence()",
+            "linkto": "javascript:mapMaker.licence()",
             "divider": false
         },
         {
