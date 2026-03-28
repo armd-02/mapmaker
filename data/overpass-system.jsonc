@@ -1,5 +1,13 @@
 {
     "osm": {
+        "sea": {
+            "overpass": [
+                "nwr[\"natural\"]"
+            ],
+            "tags": [
+                "natural=coastline"
+            ]
+        },
         "site": {
             "overpass": [
                 "wr[\"amenity\"]",
@@ -57,18 +65,26 @@
                 "landuse=aquaculture"
             ]
         },
-        "river": {
+        "waterArea": {
             "overpass": [
-                "wr[\"waterway\"]",
                 "wr[\"landuse\"]",
-                "wr[\"natural\"]"
+                "nwr[\"natural\"]"
             ],
             "tags": [
-                "waterway",
                 "landuse=basin",
                 "landuse=reservoir",
-                "natural=water",
-                "natural=coastline"
+                "natural=water"
+            ]
+        },
+        "waterLine": {
+            "overpass": [
+                "way[\"waterway\"]"
+            ],
+            "tags": [
+                "waterway=river",
+                "waterway=stream",
+                "waterway=ditch",
+                "waterway=canal"
             ]
         },
         "parking": {
@@ -98,9 +114,9 @@
         "pedestrian": {
             "overpass": [
                 "wr[\"highway\"]",
-                "wr[\"man_made\"]",
-                "wr[\"landuse\"]",
-                "wr[\"natural\"]"
+                "nwr[\"man_made\"]",
+                "nwr[\"landuse\"]",
+                "nwr[\"natural\"]"
             ],
             "tags": [
                 "highway=pedestrian",
@@ -227,6 +243,9 @@
             "domain": "wikipedia.org",
             "tag": "wikipedia",
             "overpass": [
+                "nwr[\"wikipedia\"]"
+            ],
+            "_overpass": [
                 "node[\"wikipedia\"][!\"highway\"][\"public_transport\"!=\"stop_position\"]",
                 "way[\"wikipedia\"][!\"highway\"][!\"railway\"]",
                 "relation[\"wikipedia\"][!\"route\"][!\"highway\"][!\"railway\"][\"name:ja\"!=\"本州\"][\"area\"!=\"yes\"][!\"boundary\"][!\"admin_level\"]"

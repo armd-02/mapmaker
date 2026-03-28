@@ -1,6 +1,44 @@
 {
+    "editPanels": [
+        {
+            "groupGlot": "panelWaters",
+            "styles": [
+                "sea",
+                "waterArea",
+                "waterLine"
+            ]
+        },
+        {
+            "groupGlot": "panelLands",
+            "styles": [
+                "background",
+                "park",
+                "site",
+                "garden",
+                "forest",
+                "parking",
+                "pedestrian",
+                "building",
+                "station",
+                "barrier"
+            ]
+        },
+        {
+            "groupGlot": "panelWays",
+            "styles": [
+                "railway",
+                "highway_motorway",
+                "highway_primary",
+                "highway_standard",
+                "highway_substandard",
+                "highway_alley",
+                "highway_step"
+            ]
+        }
+    ],
     "styleOrder": [
         "background",
+        "sea",
         "railway",
         "park",
         "highway_motorway",
@@ -15,7 +53,8 @@
         "pedestrian",
         "highway_step",
         "building",
-        "river",
+        "waterArea",
+        "waterLine",
         "station",
         "barrier"
     ],
@@ -30,6 +69,7 @@
                 "zoom": 15,
                 "type": "area",
                 "color": "#fff5cc80",
+                "opacity": 1,
                 "width": 0.5,
                 "dashArray": null,
                 "linecap": "round"
@@ -38,6 +78,7 @@
                 "zoom": 15,
                 "type": "area",
                 "color": "#d8f0d8",
+                "opacity": 1,
                 "width": 0.8,
                 "dashArray": null,
                 "linecap": "round"
@@ -46,14 +87,34 @@
                 "zoom": 16,
                 "type": "area",
                 "color": "#c3e2c1",
+                "opacity": 1,
                 "width": 0.3,
                 "dashArray": null,
                 "linecap": "round"
             },
-            "river": {
+            "sea": {
                 "zoom": 11,
                 "type": "area",
                 "color": "#d8ecf8",
+                "opacity": 1,
+                "width": 1,
+                "dashArray": null,
+                "linecap": "round"
+            },
+            "waterArea": {
+                "zoom": 11,
+                "type": "area",
+                "color": "#d8ecf8",
+                "opacity": 1,
+                "width": 1,
+                "dashArray": null,
+                "linecap": "round"
+            },
+            "waterLine": {
+                "zoom": 11,
+                "type": "line",
+                "color": "#d8ecf8",
+                "opacity": 1,
                 "width": 1,
                 "dashArray": null,
                 "linecap": "round"
@@ -62,6 +123,7 @@
                 "zoom": 11,
                 "type": "area",
                 "color": "#c3e2c1",
+                "opacity": 1,
                 "width": 0.8,
                 "dashArray": null,
                 "linecap": "round"
@@ -70,6 +132,7 @@
                 "zoom": 15.5,
                 "type": "area",
                 "color": "#e6e6e680",
+                "opacity": 1,
                 "width": 0.8,
                 "dashArray": null,
                 "linecap": "round"
@@ -78,6 +141,7 @@
                 "zoom": 15,
                 "type": "area",
                 "color": "#f2f2f2",
+                "opacity": 1,
                 "width": 0.5,
                 "dashArray": null,
                 "linecap": "round"
@@ -86,6 +150,7 @@
                 "zoom": 11,
                 "type": "line",
                 "color": "#b3b3b3",
+                "opacity": 1,
                 "width": 1.4,
                 "dashArray": "0",
                 "linecap": "butt",
@@ -100,6 +165,7 @@
                 "zoom": 16,
                 "type": "line",
                 "color": "#ebc8c8",
+                "opacity": 1,
                 "width": 0.8,
                 "dashArray": "4 2",
                 "linecap": "butt"
@@ -108,6 +174,7 @@
                 "zoom": 16,
                 "type": "line",
                 "color": "#ebc8c8",
+                "opacity": 1,
                 "width": 2,
                 "dashArray": "2 3",
                 "linecap": "butt"
@@ -116,6 +183,7 @@
                 "zoom": 14,
                 "type": "line",
                 "color": "#e0e0e0",
+                "opacity": 1,
                 "width": 3.0,
                 "dashArray": null,
                 "linecap": "round"
@@ -124,6 +192,7 @@
                 "zoom": 14,
                 "type": "line",
                 "color": "#d0d0d0",
+                "opacity": 1,
                 "width": 7.0,
                 "dashArray": null,
                 "linecap": "round",
@@ -138,6 +207,7 @@
                 "zoom": 12,
                 "type": "line",
                 "color": "#fbda69",
+                "opacity": 1,
                 "width": 6.0,
                 "dashArray": null,
                 "linecap": "round",
@@ -152,6 +222,7 @@
                 "zoom": 11,
                 "type": "line",
                 "color": "#f3bd9a",
+                "opacity": 1,
                 "width": 8,
                 "dashArray": null,
                 "linecap": "round",
@@ -166,6 +237,7 @@
                 "zoom": 15,
                 "type": "area",
                 "color": "#d6cdc7",
+                "opacity": 1,
                 "width": 0.7,
                 "dashArray": null,
                 "linecap": "round",
@@ -178,6 +250,7 @@
                 "zoom": 17,
                 "type": "line",
                 "color": "#c0b5af",
+                "opacity": 1,
                 "width": 0.5,
                 "dashArray": null,
                 "linecap": "round"
@@ -186,6 +259,7 @@
                 "zoom": 14,
                 "type": "area",
                 "color": "#f4dcdc",
+                "opacity": 1,
                 "width": 1,
                 "dashArray": null,
                 "linecap": "round"
@@ -221,7 +295,23 @@
                 "dashArray": null,
                 "linecap": "round"
             },
-            "river": {
+            "sea": {
+                "zoom": 11,
+                "type": "area",
+                "color": "#c0c0c0",
+                "width": 2,
+                "dashArray": null,
+                "linecap": "round"
+            },
+            "waterArea": {
+                "zoom": 11,
+                "type": "line",
+                "color": "#c0c0c0",
+                "width": 2,
+                "dashArray": null,
+                "linecap": "round"
+            },
+            "waterLine": {
                 "zoom": 11,
                 "type": "line",
                 "color": "#c0c0c0",
