@@ -2,11 +2,26 @@
 <html>
 
 <head>
-    <!--- meta name="viewport"
-        content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1, minimum-scale=1" / --->
+    <meta name="viewport"
+        content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1, minimum-scale=1" />
     <meta charset="utf-8" />
-    <meta name=“keywords” content=“mapmaker,まち歩き,マップメーカー,OpenStreetMap” />
-    <title>まち歩きマップメーカー(ver 2026/03/28)</title>
+    <meta name="keywords" content="mapmaker,まち歩き,マップメーカー,OpenStreetMap,マップ,地図" />
+    <title>まち歩きマップメーカー(ver 2026/04/01)</title>
+    <meta name="description"
+        content="まち歩きマップメーカーは、任意の場所の地図をブラウザ上で作成し、SVGやPNGで保存できるサイトです。地図はOpenStreetMapのデータを使用しており、自由に加工して利用できます。">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "まち歩きマップメーカー",
+            "applicationCategory": "DesignApplication",
+            "operatingSystem": "Web",
+            "inLanguage": "ja",
+            "url": "https://armd-02.github.io/mapmaker/",
+            "description": "まち歩きマップメーカーは、任意の場所の地図をブラウザ上で作成し、SVGやPNGで保存できるサイトです。地図はOpenStreetMapのデータを使用しており、自由に加工して利用できます。",
+            "offers": {"@type": "Offer","price": "0","priceCurrency": "JPY"}
+        }
+    </script>
     <meta property="og:url" content="https://armd-02.github.io/mapmaker/" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="まち歩きマップメーカー" />
@@ -18,7 +33,6 @@
     <meta name="twitter:description" content="自由に加工＆使える地図画像を作るサイト" />
     <meta name="twitter:image" content="https://armd-02.github.io/mapmaker/image/mapmaker.png" />
     <link rel="shortcut icon" href="favicon.ico" />
-    <link rel="stylesheet" href="./css/mapmaker.css" />
     <link rel="stylesheet" href="./css/basemenu.css" />
     <link rel="stylesheet" href="./css/leaflet.responsive.popup.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" />
@@ -64,13 +78,15 @@
     <div class="d-flex flex-column vh-100">
         <!-- タイトルメニュー（固定） -->
         <header class="border-bottom">
-            <div class="row g-0">
+            <div class="row g-0 align-items-center">
                 <div class="col-7 p-0 h-100">
-                    <div class="d-flex align-items-center">
-                        <img src="image/mapmaker.svg" class="ms-1" style="height:36px" />
-                        <a class="title" href="javascript:mapMaker.licence()">
-                            <span class="title" glot-model="title"></span><span class="subtitle"
-                                glot-model="subtitle"></span>
+                    <div class="d-flex">
+                        <a class="title title d-flex align-items-center text-decoration-none"
+                            href="javascript:mapMaker.licence()">
+                            <img src="image/mapmaker.svg" class="ms-1" style="height:36px" />
+                            <span class="title" glot-model="title"></span>
+                            <span class="subtitle" glot-model="subtitle"></span>
+                            <span class="subtitle" glot-model="licence"></span>
                         </a>
                     </div>
                     <div>
@@ -85,7 +101,7 @@
                         <span class="dropdown-item"></span>
                         <div class="dropdown-divider"></div>
                     </div>
-                    <button class='btn btn-primary ps-2 pe-2 pt-1 pb-1'
+                    <button class='btn btn-primary ps-2 pe-2 pt-1 pb-1 text-nowrap'
                         onclick='mapMaker.searchPoi(search_input.value)'></button>
                     <input type='search' id='search_input' class='form-control w-75 h-75 me-2'></input>
                 </div>

@@ -23,6 +23,10 @@
         "ja": "自由に加工＆使える地図画像を作るサイト",
         "en": "Free to edit & use the map for anything"
     },
+    "licence": {
+        "ja": "(利用規約)",
+        "en": "(Terms of Use)"
+    },
     "licence_title": {
         "ja": "地図の利用規約",
         "en": "Terms of Use for Maps"
