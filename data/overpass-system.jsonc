@@ -122,7 +122,7 @@
                 "nwr[\"natural\"]"
             ],
             "tags": [
-                "highway=pedestrian",
+                "highway=pedestrian&&area",
                 "man_made=bridge",
                 "landuse=brownfield",
                 "natural=sand"
