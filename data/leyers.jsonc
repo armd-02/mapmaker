@@ -36,28 +36,6 @@
             ]
         }
     ],
-    "styleOrder": [
-        "background",
-        "sea",
-        "railway",
-        "park",
-        "highway_motorway",
-        "site",
-        "highway_primary",
-        "garden",
-        "highway_standard",
-        "forest",
-        "highway_substandard",
-        "parking",
-        "highway_alley",
-        "pedestrian",
-        "highway_step",
-        "building",
-        "waterArea",
-        "waterLine",
-        "station",
-        "barrier"
-    ],
     "style": {
         "color": {
             "background": {
@@ -80,6 +58,15 @@
                 "color": "#d8f0d8",
                 "opacity": 1,
                 "width": 0.8,
+                "dashArray": null,
+                "linecap": "round"
+            },
+            "pedestrian": {
+                "zoom": 15,
+                "type": "area",
+                "color": "#f2f2f2",
+                "opacity": 1,
+                "width": 0.5,
                 "dashArray": null,
                 "linecap": "round"
             },
@@ -134,15 +121,6 @@
                 "color": "#e6e6e680",
                 "opacity": 1,
                 "width": 0.8,
-                "dashArray": null,
-                "linecap": "round"
-            },
-            "pedestrian": {
-                "zoom": 15,
-                "type": "area",
-                "color": "#f2f2f2",
-                "opacity": 1,
-                "width": 0.5,
                 "dashArray": null,
                 "linecap": "round"
             },
@@ -287,6 +265,14 @@
                 "dashArray": null,
                 "linecap": "round"
             },
+            "pedestrian": {
+                "zoom": 15,
+                "type": "line",
+                "color": "#c0c0c0",
+                "width": 1,
+                "dashArray": null,
+                "linecap": "round"
+            },
             "garden": {
                 "zoom": 16,
                 "type": "line",
@@ -332,14 +318,6 @@
                 "type": "line",
                 "color": "#a0a0a0",
                 "width": 2,
-                "dashArray": null,
-                "linecap": "round"
-            },
-            "pedestrian": {
-                "zoom": 15,
-                "type": "line",
-                "color": "#c0c0c0",
-                "width": 1,
                 "dashArray": null,
                 "linecap": "round"
             },
