@@ -10,10 +10,10 @@
         },
         "site": {
             "overpass": [
-                "wr[\"amenity\"]",
-                "wr[\"landuse\"]",
-                "wr[\"leisure\"]",
-                "wr[\"power\"]"
+                "nwr[\"amenity\"]",
+                "nwr[\"landuse\"]",
+                "nwr[\"leisure\"]",
+                "nwr[\"power\"]"
             ],
             "tags": [
                 "amenity=place_of_worship",
@@ -32,9 +32,9 @@
         },
         "park": {
             "overpass": [
-                "wr[\"amenity\"]",
-                "wr[\"leisure\"]",
-                "wr[\"man_made\"]"
+                "nwr[\"amenity\"]",
+                "nwr[\"leisure\"]",
+                "nwr[\"man_made\"]"
             ],
             "tags": [
                 "leisure=park",
@@ -53,8 +53,8 @@
         },
         "garden": {
             "overpass": [
-                "wr[\"leisure\"]",
-                "wr[\"landuse\"]"
+                "nwr[\"leisure\"]",
+                "nwr[\"landuse\"]"
             ],
             "tags": [
                 "leisure=garden",
@@ -67,18 +67,20 @@
         },
         "waterArea": {
             "overpass": [
-                "wr[\"landuse\"]",
+                "nwr[\"leisure\"]",
+                "nwr[\"landuse\"]",
                 "nwr[\"natural\"]"
             ],
             "tags": [
                 "landuse=basin",
                 "landuse=reservoir",
-                "natural=water"
+                "natural=water",
+                "leisure=swimming_pool"
             ]
         },
         "waterLine": {
             "overpass": [
-                "way[\"waterway\"]"
+                "nwr[\"waterway\"]"
             ],
             "tags": [
                 "waterway=river",
@@ -89,7 +91,7 @@
         },
         "parking": {
             "overpass": [
-                "wr[\"amenity\"]"
+                "nwr[\"amenity\"]"
             ],
             "tags": [
                 "amenity=parking",
@@ -98,9 +100,9 @@
         },
         "forest": {
             "overpass": [
-                "wr[\"barrier\"]",
+                "nwr[\"barrier\"]",
                 "nwr[\"natural\"]",
-                "wr[\"landuse\"]"
+                "nwr[\"landuse\"]"
             ],
             "tags": [
                 "barrier=hedge",
@@ -108,12 +110,13 @@
                 "natural=tree_row",
                 "natural=tree",
                 "landuse=forest",
-                "natural=grassland"
+                "natural=grassland",
+                "natural=shrubbery"
             ]
         },
         "pedestrian": {
             "overpass": [
-                "wr[\"highway\"]",
+                "nwr[\"highway\"]",
                 "nwr[\"man_made\"]",
                 "nwr[\"landuse\"]",
                 "nwr[\"natural\"]"
@@ -127,8 +130,9 @@
         },
         "railway": {
             "overpass": [
-                "wr[\"railway\"][\"tunnel\"!~\".*\"]",
-                "wr[\"service\"=\"yard\"]"
+                "nwr[\"railway\"][\"tunnel\"!~\".*\"]",
+                "nwr[\"service\"=\"yard\"]",
+                "nwr[\"roller_coaster\"]"
             ],
             "tags": [
                 "railway=construction",
@@ -140,22 +144,25 @@
                 "railway=rail",
                 "railway=subway",
                 "railway=tram",
-                "service=yard"
+                "service=yard",
+                "roller_coaster=track"
             ]
         },
         "highway_alley": {
             "overpass": [
-                "wr[\"highway\"]"
+                "nwr[\"highway\"]"
             ],
             "tags": [
                 "highway=footway",
                 "highway=path",
-                "highway=track"
+                "highway=track",
+                "highway=cycleway",
+                "highway=corridor"
             ]
         },
         "highway_step": {
             "overpass": [
-                "wr[\"highway\"]"
+                "nwr[\"highway\"]"
             ],
             "tags": [
                 "highway=steps"
@@ -163,7 +170,7 @@
         },
         "highway_substandard": {
             "overpass": [
-                "wr[\"highway\"]"
+                "nwr[\"highway\"]"
             ],
             "tags": [
                 "highway=unclassified",
@@ -175,7 +182,7 @@
         },
         "highway_standard": {
             "overpass": [
-                "wr[\"highway\"]"
+                "nwr[\"highway\"]"
             ],
             "tags": [
                 "highway=tertiary",
@@ -186,7 +193,7 @@
         },
         "highway_primary": {
             "overpass": [
-                "wr[\"highway\"]"
+                "nwr[\"highway\"]"
             ],
             "tags": [
                 "highway=trunk",
@@ -197,18 +204,19 @@
         },
         "highway_motorway": {
             "overpass": [
-                "wr[\"highway\"]"
+                "nwr[\"highway\"]"
             ],
             "tags": [
+                "highway=raceway",
                 "highway=motorway",
                 "highway=motorway_link"
             ]
         },
         "building": {
             "overpass": [
-                "wr[\"building\"]",
-                "wr[\"man_made\"]",
-                "wr[\"waterway\"]"
+                "nwr[\"building\"]",
+                "nwr[\"man_made\"]",
+                "nwr[\"waterway\"]"
             ],
             "tags": [
                 "building",
@@ -218,7 +226,7 @@
         },
         "barrier": {
             "overpass": [
-                "wr[\"barrier\"]"
+                "nwr[\"barrier\"]"
             ],
             "tags": [
                 "barrier=wall",
@@ -228,8 +236,8 @@
         },
         "station": {
             "overpass": [
-                "wr[\"railway\"][\"tunnel\"!~\".*\"]",
-                "wr[\"building\"]"
+                "nwr[\"railway\"][\"tunnel\"!~\".*\"]",
+                "nwr[\"building\"]"
             ],
             "tags": [
                 "building=train_station",
@@ -260,7 +268,7 @@
                 "nwr[\"shop\"]",
                 "nwr[\"amenity\"]",
                 "nwr[\"tourism\"]",
-                "nw[\"office\"]"
+                "nwr[\"office\"]"
             ],
             "tags": [
                 "shop",
@@ -314,7 +322,7 @@
                 "nwr[\"amenity\"]",
                 "nwr[\"natural\"]",
                 "nwr[\"leisure\"]",
-                "nw[\"playground\"]"
+                "nwr[\"playground\"]"
             ],
             "tags": [
                 "amenity=bench",
@@ -338,10 +346,10 @@
         "natural": {
             "marker": "maki-icon/animal-shelter.svg",
             "overpass": [
-                "nw[\"natural\"]",
-                "nw[\"species\"]",
-                "nw[\"species:en\"]",
-                "nw[\"attraction\"]"
+                "nwr[\"natural\"]",
+                "nwr[\"species\"]",
+                "nwr[\"species:en\"]",
+                "nwr[\"attraction\"]"
             ],
             "tags": [
                 "natural",
@@ -357,10 +365,10 @@
         "disaster&move": {
             "marker": "maki-icon/defibrillator.svg",
             "overpass": [
-                "nw[\"highway\"]",
-                "nw[\"amenity\"]",
-                "nw[\"emergency\"]",
-                "nw[\"man_made\"]"
+                "nwr[\"highway\"]",
+                "nwr[\"amenity\"]",
+                "nwr[\"emergency\"]",
+                "nwr[\"man_made\"]"
             ],
             "tags": [
                 "highway",
