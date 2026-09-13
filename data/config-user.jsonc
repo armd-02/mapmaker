@@ -3,6 +3,10 @@
         "mode": false,
         "osmbounds": []
     },
+    "intro": {
+        "use": true,
+        "storageKey": "mapmaker-intro-last-shown"
+    },
     "default": {
         "HeaderSize": 40,
         "SplashImage": "image/splash.png",

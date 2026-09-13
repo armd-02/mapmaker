@@ -1,7 +1,7 @@
 {
     "about": {
         "ja": "まち歩きマップメーカーについて",
-        "en": "about Town Walk Map Maker"
+        "en": "about Walking Map Maker"
     },
     "about-bg": {
         "ja": "ヘッダー部の背景画像について",
@@ -17,11 +17,23 @@
     },
     "title": {
         "ja": "まち歩きマップメーカー",
-        "en": "Town Walk Map Maker"
+        "en": "Walking Map Maker"
     },
     "subtitle": {
         "ja": "自由に加工＆使える地図画像を作るサイト",
         "en": "Free to edit & use the map for anything"
+    },
+    "intro_title": {
+        "ja": "まち歩きマップメーカーで地図を作ってみましょう",
+        "en": "Create a map with Walking Map Maker"
+    },
+    "intro_message": {
+        "ja": "場所を検索してズームし、「マップを作る」を押すと、自由に加工・印刷できる地図画像を作成できます。",
+        "en": "Search for a place, zoom in, and select “Create Map” to make a map image you can freely edit and print."
+    },
+    "intro_close": {
+        "ja": "案内を閉じる",
+        "en": "Close introduction"
     },
     "licence": {
         "ja": "(利用規約)",
@@ -43,13 +55,21 @@
         "ja": "ズームレベル：",
         "en": "Zoom Level: "
     },
+    "resize_basemenu_title": {
+        "ja": "ドラッグしてサイズ変更",
+        "en": "Drag to resize"
+    },
+    "resize_basemenu": {
+        "ja": "ドラッグして基本メニューのサイズを変更",
+        "en": "Drag to resize the main menu"
+    },
     "selectdate": {
         "ja": "（実験）日付指定：",
         "en": "(TEST)Acquisition Date: "
     },
     "makemap": {
         "ja": "マップを作る",
-        "en": "Make a map of this place"
+        "en": "Create Map"
     },
     "controlmenu": {
         "ja": "マップを編集する",
@@ -72,12 +92,8 @@
         "en": "Please enter the exact name of the town from the state to the town."
     },
     "morezoom": {
-        "ja": "もっとズームが必要です",
-        "en": "Please zoom in more"
-    },
-    "morezoom2": {
-        "ja": "ズームすると地物が増えます。",
-        "en": "When you zoom in,will see more objects."
+        "ja": "もっとズームすると地物が増えます。",
+        "en": "Zoom in more to see additional features."
     },
     "custommode": {
         "ja": "編集中（ロック）",
@@ -182,6 +198,18 @@
     "area_deselect": {
         "ja": "選択解除",
         "en": "deselection"
+    },
+    "select_size": {
+        "ja": "大きさ",
+        "en": "Size"
+    },
+    "add_icon": {
+        "ja": "アイコン",
+        "en": "Add Icon"
+    },
+    "select_color": {
+        "ja": "色選択",
+        "en": "Select color"
     },
     "area_A4": {
         "ja": "A4縦サイズ",
