@@ -1,73 +1,64 @@
-<div id="basemenuResizeHandle" title="ドラッグしてサイズ変更"
-    aria-label="ドラッグして基本メニューのサイズを変更"></div>
+<div id="basemenuResizeHandle" title="ドラッグしてサイズ変更" aria-label="ドラッグして基本メニューのサイズを変更"></div>
 
 <div class="container-fluid text-center m-0 p-1">
 
-    <div class="row g-0 d-none" id="morezoom">
-        <div class="col p-1 m-0">
-            <i class="fa-solid fa-computer-mouse"></i><span glot-model="morezoom" class="ms-2"></span>
-        </div>
-    </div>
-
     <div class="row g-0" id="makeMap">
         <div class="col p-1 m-0">
-            <button class="btn btn-primary w-100" onclick="mapMaker.make(Basic.getdate())">
+            <button class="btn btn-primary w-100" aria-describedby="morezoom" disabled onclick="mapMaker.make(Basic.getdate())">
                 <i class="fas fa-map me-2"></i><span glot-model="makemap" class="ms-2"></span>
             </button>
+            <div id="morezoom" class="small mt-2 d-none" role="status">
+                <span glot-model="morezoom"></span>
+                <ul id="morezoomFeatures" class="text-start mb-0 mt-1 ps-4"></ul>
+            </div>
         </div>
     </div>
 
-    <div class="row g-0 mb-2" id="clearMap">
-        <button class="btn btn-light w-100" onclick="mapMaker.clearAll()">
-            <i class="fas fa-undo me-2"></i> <span glot-model="restart_title"></span>
-        </button>
-    </div>
-
-    <div class="row row-cols-2" id="saveMap">
-        <button class="btn btn-light flex-fill" onclick="mapMaker.save('png');">
-            <i class="fas fa-file-download me-2 flex-row"></i><span>PNG</span>
-        </button>
-        <button class="btn btn-light flex-fill" onclick="mapMaker.save('svg');">
-            <i class="fas fa-file-download me-2 flex-row"></i><span>SVG</span>
-        </button>
+    <div class="row row-cols-3 gx-0 mt-0" id="saveMap">
+        <div class="col-4 p-1 m-0">
+            <button class="btn btn-secondary ps-0 pe-0 w-100" onclick="mapMaker.clearAll()">
+                <i class="fas fa-undo me-2"></i>
+            </button>
+        </div>
+        <div class="col-4 p-1 m-0">
+            <button class="btn btn-light ps-0 pe-0 w-100" onclick="mapMaker.save('png');">
+                <i class="fas fa-file-download me-2 flex-row"></i><span class="customName">PNG</span>
+            </button>
+        </div>
+        <div class="col-4 p-1 m-0">
+            <button class="btn btn-light ps-0 pe-0 w-100" onclick="mapMaker.save('svg');">
+                <i class="fas fa-file-download me-2 flex-row"></i><span class="customName">SVG</span>
+            </button>
+        </div>
     </div>
 
     <div class="row row-cols-3 gy-3 gx-0 mt-0" id="controlMenu">
         <div class="col-4 p-1 m-0">
-            <button class="btn btn-light dropdown-toggle w-100" id="AreaSelect1" data-bs-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false"><i class="fas fa-vector-square"></i>
+            <button class="btn btn-light ps-0 pe-0 dropdown-toggle w-100" id="AreaSelect1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-vector-square"></i><br>
+                <span class="customName" glot-model="select_size"></span>
             </button>
             <div class="dropdown-menu" aria-labelledby="AreaSelect1">
-                <span class="dropdown-item btn ps-1 me-1" onclick="mapMaker.area_select('A4')"><i
-                        class="fas fa-arrows-alt-v ms-1 pe-1 ms-2"></i><span glot-model="area_A4"
-                        class="ms-2"></span></span>
-                <span class="dropdown-item btn ps-1 me-1" onclick="mapMaker.area_select('A4_landscape')"><i
-                        class="fas fa-arrows-alt-h ms-2"></i><span glot-model="area_A4_landscape"
-                        class="ms-2"></span></span>
-                <span class="dropdown-item btn ps-1 me-1" onclick="mapMaker.area_select('A3')"><i
-                        class="fas fa-arrows-alt-v ms-1 pe-1 ms-2"></i><span glot-model="area_A3"
-                        class="ms-2"></span></span>
-                <span class="dropdown-item btn ps-1 me-1" onclick="mapMaker.area_select('A3_landscape')"><i
-                        class="fas fa-arrows-alt-h ms-2"></i><span glot-model="area_A3_landscape"
-                        class="ms-2"></span></span>
-                <span class="dropdown-item btn ps-1 me-1" onclick="mapMaker.area_select('')"><i
-                        class="fas fa-vector-square ms-2"></i><span glot-model="area_deselect"
-                        class="ms-2"></span></span>
+                <span class="dropdown-item btn ps-1 me-1" onclick="mapMaker.area_select('A4')"><i class="fas fa-arrows-alt-v ms-1 pe-1 ms-2"></i><span glot-model="area_A4" class="ms-2"></span></span>
+                <span class="dropdown-item btn ps-1 me-1" onclick="mapMaker.area_select('A4_landscape')"><i class="fas fa-arrows-alt-h ms-2"></i><span glot-model="area_A4_landscape" class="ms-2"></span></span>
+                <span class="dropdown-item btn ps-1 me-1" onclick="mapMaker.area_select('A3')"><i class="fas fa-arrows-alt-v ms-1 pe-1 ms-2"></i><span glot-model="area_A3" class="ms-2"></span></span>
+                <span class="dropdown-item btn ps-1 me-1" onclick="mapMaker.area_select('A3_landscape')"><i class="fas fa-arrows-alt-h ms-2"></i><span glot-model="area_A3_landscape" class="ms-2"></span></span>
+                <span class="dropdown-item btn ps-1 me-1" onclick="mapMaker.area_select('')"><i class="fas fa-vector-square ms-2"></i><span glot-model="area_deselect" class="ms-2"></span></span>
             </div>
         </div>
 
         <div class="col-4 p-1 m-0" id="editMenu">
-            <button class="btn btn-light dropdown-toggle w-100" id="dropdownMenuButton" data-bs-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-map-marker"></i>
+            <button class="btn btn-light ps-0 pe-0 dropdown-toggle w-100" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-map-marker"></i><br>
+                <span class="customName" glot-model="add_icon"></span>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="menu_list"></div>
         </div>
 
         <div class="col-4 p-1 m-0" id="colorMenu">
-            <button class="btn btn-light dropdown-toggle w-100" id="ColorSelect" data-bs-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-palette"></i>
+            <button class="btn btn-light ps-0 pe-0 dropdown-toggle w-100" id="ColorSelect" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-palette"></i><br>
+                <span class="customName" glot-model="select_color"></span>
             </button>
             <div class="dropdown-menu" aria-labelledby="ColorSelect">
                 <span class="dropdown-item btn ps-1 me-1" onclick="LayerCont.setStyle('color')">
@@ -75,7 +66,7 @@
                     <span glot-model="color_palette"></span></span>
                 <span class="dropdown-item btn ps-1 me-1" onclick="LayerCont.setStyle('mono')">
                     <i class="fas fa-swatchbook ms-2 me-1"></i>
-                    <span glot-model="mono_palette"></span></span>
+                    <span class="customName" glot-model="mono_palette"></span></span>
             </div>
         </div>
     </div>
@@ -87,8 +78,7 @@
             </div>
             <div class="form-check form-switch d-flex align-items-center justify-content-between px-2 py-1 border-bottom">
                 <label class="form-check-label" for="rough_enabled" glot-model="rough_on_off"></label>
-                <input class="form-check-input float-none m-0" type="checkbox" role="switch" id="rough_enabled"
-                    onchange="mapMaker.rough_change()">
+                <input class="form-check-input float-none m-0" type="checkbox" role="switch" id="rough_enabled" onchange="mapMaker.rough_change()">
             </div>
             <div id="roughParameters" class="d-none">
                 <div class="px-2 py-1 border-bottom">
@@ -96,21 +86,18 @@
                         <label for="roughness" glot-model="rough_roughness"></label>
                         <output id="roughness_value" for="roughness">1.0</output>
                     </div>
-                    <input class="form-range rough-range" type="range" id="roughness" min="0" max="10" step="0.1"
-                        value="1" oninput="mapMaker.rough_change()" disabled>
+                    <input class="form-range rough-range" type="range" id="roughness" min="0" max="10" step="0.1" value="1" oninput="mapMaker.rough_change()" disabled>
                 </div>
                 <div class="px-2 py-1 border-bottom">
                     <div class="d-flex justify-content-between">
                         <label for="bowing" glot-model="rough_bowing"></label>
                         <output id="bowing_value" for="bowing">1.0</output>
                     </div>
-                    <input class="form-range rough-range" type="range" id="bowing" min="0" max="10" step="0.1"
-                        value="1" oninput="mapMaker.rough_change()" disabled>
+                    <input class="form-range rough-range" type="range" id="bowing" min="0" max="10" step="0.1" value="1" oninput="mapMaker.rough_change()" disabled>
                 </div>
                 <div class="d-flex justify-content-between align-items-center px-2 py-1 border-bottom">
                     <label for="rough_fill_style" class="text-nowrap me-2" glot-model="rough_fill"></label>
-                    <select class="form-select form-select-sm rough-fill-select" id="rough_fill_style"
-                        onchange="mapMaker.rough_change()" disabled>
+                    <select class="form-select form-select-sm rough-fill-select" id="rough_fill_style" onchange="mapMaker.rough_change()" disabled>
                         <option value="hachure">Hachure</option>
                         <option value="solid" selected>Solid</option>
                         <option value="zigzag">Zigzag</option>

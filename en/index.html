@@ -1,39 +1,40 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 
 <head>
     <meta name="viewport"
         content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1, minimum-scale=1" />
     <meta charset="utf-8" />
-    <link rel="canonical" href="https://mapmaker.openacrossbase.net/">
+    <base href="/">
+    <link rel="canonical" href="https://mapmaker.openacrossbase.net/en/">
     <link rel="alternate" hreflang="ja" href="https://mapmaker.openacrossbase.net/">
     <link rel="alternate" hreflang="en" href="https://mapmaker.openacrossbase.net/en/">
     <link rel="alternate" hreflang="x-default" href="https://mapmaker.openacrossbase.net/">
-    <title>まち歩きマップメーカー | 自由に加工・印刷できる地図画像を作成</title>
+    <title>Walking Map Maker | Create Custom Printable Map Images</title>
     <meta name="description"
-        content="まち歩きマップメーカーは、任意の場所の地図をデザインしてSVGやPNGで保存できるサイトです。OpenStreetMapのデータを使用した地図を作成でき、印刷・加工・配布・販売にも利用できます。">
+        content="Walking Map Maker lets you design a map of any location using OpenStreetMap data and save it as SVG or PNG for printing, editing, distribution, or commercial use.">
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
-            "name": "まち歩きマップメーカー",
+            "name": "Walking Map Maker",
             "applicationCategory": "DesignApplication",
             "operatingSystem": "Web",
-            "inLanguage": "ja",
-            "url": "https://mapmaker.openacrossbase.net/",
-            "description": "まち歩きマップメーカーは、任意の場所の地図をデザインしてSVGやPNGで保存できるサイトです。OpenStreetMapのデータを使用した地図を作成でき、印刷・加工・配布・販売にも利用できます。",
+            "inLanguage": "en",
+            "url": "https://mapmaker.openacrossbase.net/en/",
+            "description": "Walking Map Maker lets you design a map of any location using OpenStreetMap data and save it as SVG or PNG for printing, editing, distribution, or commercial use.",
             "offers": {"@type": "Offer","price": "0","priceCurrency": "JPY"}
         }
     </script>
-    <meta property="og:url" content="https://mapmaker.openacrossbase.net/" />
+    <meta property="og:url" content="https://mapmaker.openacrossbase.net/en/" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="まち歩きマップメーカー" />
-    <meta property="og:description" content="自由に加工＆使える地図画像を作るサイト" />
+    <meta property="og:title" content="Walking Map Maker" />
+    <meta property="og:description" content="Create freely editable and reusable map images." />
     <meta property="og:image" content="https://mapmaker.openacrossbase.net/image/ogimage.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@K_Sakanoshita" />
-    <meta name="twitter:title" content="まち歩きマップメーカー" />
-    <meta name="twitter:description" content="自由に加工＆使える地図画像を作るサイト" />
+    <meta name="twitter:title" content="Walking Map Maker" />
+    <meta name="twitter:description" content="Create freely editable and reusable map images." />
     <meta name="twitter:image" content="https://mapmaker.openacrossbase.net/image/ogimage.png" />
     <link rel="shortcut icon" href="favicon.ico" />
     <link rel="stylesheet" href="./css/basemenu.css" />
@@ -85,12 +86,12 @@
     <div id="exportProcessing" class="export-processing d-none" role="status" aria-live="assertive" aria-busy="true">
         <div class="export-processing-message">
             <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
-            <span glot-model="export_processing">ダウンロードデータを作成中です。しばらくお待ちください。</span>
+            <span glot-model="export_processing">Preparing the download. Please wait.</span>
         </div>
     </div>
 
     <div class="d-flex flex-column app-viewport">
-        <!-- タイトルメニュー（固定） -->
+        <!-- Fixed title menu -->
         <header class="border-bottom">
             <div class="row g-0 align-items-center">
                 <div class="col-7 p-0 h-100">
@@ -133,7 +134,7 @@
                             <p glot-model="intro_message"></p>
                         </div>
                         <button id="mapMakerIntroClose" class="mapmaker-intro__close" type="button"
-                            aria-label="案内を閉じる">&times;</button>
+                            aria-label="Close introduction">&times;</button>
                     </section>
                     <aside id="roughPreviewWindow" class="rough-preview-window d-none" aria-live="polite">
                         <div id="roughPreviewStatus" class="rough-preview-status d-none"></div>

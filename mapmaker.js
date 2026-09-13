@@ -292,6 +292,8 @@ class MapMaker {
         const editbar = document.getElementById("editbar");
         const handle = document.getElementById("basemenuResizeHandle");
         if (!editbar || !handle) return;
+        handle.title = glot.get("resize_basemenu_title");
+        handle.setAttribute("aria-label", glot.get("resize_basemenu"));
 
         let dragging = false;
         let isWide = false;
@@ -498,6 +500,7 @@ class MapMaker {
                 mode: "close", callback_close: () => { winCont.closeModal() }
             });
         }
+        if (keyword === "") return;
         getLatLng(keyword, (latlng) => {
             if (latlng.level === 0) {                   // 見つからず
                 errorMsg();
@@ -664,7 +667,7 @@ class MapMaker {
                 roughControls.classList.remove("d-none");  // Show Rough.js controls
                 this.rough_change();
                 saveMap.classList.remove("d-none");         // Show Save Button
-                clearMap.classList.remove("d-none");           // Hide Clear Button
+                //clearMap.classList.remove("d-none");           // Hide Clear Button
                 ["dragging", "zoomControl", "scrollWheelZoom", "touchZoom"].forEach(key => map[key].disable());
                 $("#search_input").attr('disabled', 'disabled');
                 MapCont.stop();
@@ -685,7 +688,7 @@ class MapMaker {
                 roughControls.classList.add("d-none");      // Hide Rough.js controls
                 this.rough_change();
                 saveMap.classList.add("d-none");            // Hide Save Button
-                clearMap.classList.add("d-none");           // Hide Clear Button
+                //clearMap.classList.add("d-none");           // Hide Clear Button
                 customMap.classList.add("d-none");          // Hide Custom Area
                 map.doubleClickZoom.enable();
                 MapCont.start();
@@ -737,13 +740,26 @@ class MapMaker {
     zoomMessage() {
         let nowzoom = map.getZoom();
         let message = `${glot.get("zoomlevel")}${map.getZoom()} `;
-        if (nowzoom < Conf.default.MinZoomLevel) {
-            message += `<br>${glot.get("morezoom")}`;
-            makeMap.classList.add("d-none");
-        } else {
-            if (nowzoom < Conf.default.LimitZoomLevel) message += `<br>${glot.get("morezoom2")}`;
-            if (!mapMaker.custom()) makeMap.classList.remove("d-none");
-        };
+        const needsZoom = nowzoom < Conf.default.MinZoomLevel;
+        makeMap.classList.toggle("d-none", mapMaker.custom());
+        makeMap.querySelector("button").disabled = needsZoom;
+        const zoomGuidance = document.getElementById("morezoom");
+        zoomGuidance.classList.toggle("d-none", nowzoom >= Conf.default.LimitZoomLevel);
+        const featureList = document.getElementById("morezoomFeatures");
+        featureList.replaceChildren();
+        if (nowzoom < Conf.default.LimitZoomLevel) {
+            LayerCont.styles
+                .filter(key => {
+                    const zoom = Conf.style[LayerCont.palette][key].zoom;
+                    return zoom > nowzoom && zoom <= Conf.default.LimitZoomLevel;
+                })
+                .sort((a, b) => Conf.style[LayerCont.palette][a].zoom - Conf.style[LayerCont.palette][b].zoom)
+                .forEach(key => {
+                    const item = document.createElement("li");
+                    item.textContent = glot.get(`menu_${key}`);
+                    featureList.appendChild(item);
+                });
+        }
         if (mapMaker.custom()) message += `<br>${glot.get("custommode")}`;
         $("#zoomlevel").html("<h2 class='zoom'>" + message + "</h2>");
     }
