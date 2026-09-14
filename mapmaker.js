@@ -15,8 +15,8 @@ class MapMaker {
         this.roughPreviewRendering = false
         this.roughPreviewPending = false
         this.exportInProgress = false
-        this.basemenuResizeInitialized = false
-        this.basemenuResizeFrame = null
+        this.basemenuWindowInitialized = false
+        this.basemenuWindowMode = "minimized"
     }
     // Initialize
     init(menuhtml) {
@@ -37,13 +37,16 @@ class MapMaker {
         if (roughPreviewWindow) roughPane.appendChild(roughPreviewWindow);
         MapCont.controlAdd("bottomleft", "zoomlevel", "<div><.div>", "");
         mapMaker.makemenu(menuhtml);										// Make edit menu
-        mapMaker.initBasemenuResize();
+        mapMaker.initBasemenuWindow();
         winCont.menulist_make();
         mapMaker.zoomMessage();																// Zoom 
         map.on('zoomend', () => mapMaker.zoomMessage());										// ズーム終了時に表示更新
-        document.getElementById("search_input").placeholder = glot.get("address")			// set placeholder
-        document.getElementById("search_input").previousElementSibling.innerHTML = glot.get("search")	// set button name
-        document.getElementById("search_input").addEventListener('change', (e) => { mapMaker.searchPoi(e.target.value) });	// Address Search
+        const searchInput = document.getElementById("search_input");
+        const searchButton = searchInput.previousElementSibling;
+        searchInput.placeholder = glot.get("address");
+        searchButton.title = glot.get("search");
+        searchButton.setAttribute("aria-label", glot.get("search"));
+        searchInput.addEventListener('change', (e) => { mapMaker.searchPoi(e.target.value) });	// Address Search
     }
 
     rough_change() {
@@ -251,11 +254,11 @@ class MapMaker {
 
                 // 幅変更時のイベント定義
                 $(key_line).on('change', (event) => {
-                    Layers[key].width = event.target.value;; //width;
-                    LayerCont.updateLayer(key);
+                    Layers[key].width = event.target.value; //width;
+                    LayerCont.updateLayerWidth(key);
                 });
                 // 表示変更時のイベント定義
-                $(`#${key}_layer`).on('click', function () {
+                $(`#${key}_layer`).on('click', async function () {
                     if (key_layer.indexOf("background") > -1) { // 地面の処理
                         $("#mapid").css('background-color', "");
                         $("#mapid").addClass("bg-clear");
@@ -265,11 +268,16 @@ class MapMaker {
                     } else {    // その他レイヤの処理
                         let view = $(key_layer).children().attr("class").indexOf("fa-trash-alt") > 0 ? false : true;    // 現在の状態を判定
                         $(key_layer).children().toggleClass("fa-trash-alt fa-undo");
-                        for (let eKey of LayerCont.styles) {
-                            if (Layers[eKey].geojson) {
-                                winCont.modal_text(`Map Writeing... ${eKey}`, true);
-                                LayerCont.makeLayer(eKey, eKey == key ? view : undefined);   // 指定したkeyレイヤーを作成
-                            };
+                        if (Layers[key].geojson) {
+                            const processingMessage = `<div class="d-flex align-items-center gap-2"><span class="spinner-border spinner-border-sm" aria-hidden="true"></span><span>${glot.get("processing_message")}</span></div>`;
+                            await winCont.modal_open({ title: "", message: processingMessage, mode: "", compact: true });
+                            await new Promise(resolve => requestAnimationFrame(() => setTimeout(resolve, 0)));
+                            try {
+                                LayerCont.updateLayerVisibility(key, view);
+                            } finally {
+                                await new Promise(resolve => requestAnimationFrame(resolve));
+                                await winCont.closeModal();
+                            }
                         };
                     }
                     // 削除・復活後の表示状態を手書きプレビューにも反映する。
@@ -286,67 +294,69 @@ class MapMaker {
         console.log("End: make menu.")
     }
 
-    initBasemenuResize() {
-        if (this.basemenuResizeInitialized) return;
+    initBasemenuWindow() {
+        if (this.basemenuWindowInitialized) return;
 
         const editbar = document.getElementById("editbar");
-        const handle = document.getElementById("basemenuResizeHandle");
-        if (!editbar || !handle) return;
-        handle.title = glot.get("resize_basemenu_title");
-        handle.setAttribute("aria-label", glot.get("resize_basemenu"));
+        const minimizeButton = document.getElementById("basemenuMinimize");
+        const resizeButton = document.getElementById("basemenuResize");
+        if (!editbar || !minimizeButton || !resizeButton) return;
+        const minimumSizes = new Map();
 
-        let dragging = false;
-        let isWide = false;
-        let requestedSize = 0;
+        const updateResizeButton = () => {
+            const expanded = this.basemenuWindowMode == "expanded";
+            const label = glot.get(expanded ? "basemenu_restore" : "basemenu_expand");
+            resizeButton.title = label;
+            resizeButton.setAttribute("aria-label", label);
+            resizeButton.classList.toggle("is-expanded", expanded);
+        };
 
-        const applyDrag = () => {
-            this.basemenuResizeFrame = null;
+        const applyWindowSize = () => {
+            const wideLayout = window.matchMedia("(min-width: 992px)").matches;
+            const portrait = window.matchMedia("(orientation: portrait)").matches;
             const rect = editbar.getBoundingClientRect();
-            const total = isWide ? rect.width : rect.height;
-            const minMenuSize = isWide ? 180 : 120;
-            const minMapSize = isWide ? 240 : 160;
-            const size = Math.max(minMenuSize, Math.min(requestedSize, total - minMapSize));
-            const property = isWide ? "--basemenu-width" : "--basemenu-height";
+            const total = wideLayout ? rect.width : rect.height;
+            const visibleControls = [makeMap, saveMap, controlMenu]
+                .filter(element => element && !element.classList.contains("d-none"));
+            const controlsBottom = visibleControls.reduce((bottom, element) => {
+                return Math.max(bottom, element.getBoundingClientRect().bottom - rect.top);
+            }, 0);
+            const layoutKey = wideLayout ? "wide" : (portrait ? "portrait" : "landscape");
+            const measuredMinimum = wideLayout ? 240 : Math.max(120, Math.ceil(controlsBottom + 4));
+            const minimum = Math.max(minimumSizes.get(layoutKey) || 0, measuredMinimum);
+            minimumSizes.set(layoutKey, minimum);
+            const minimumMap = wideLayout ? 240 : 160;
+            let size = minimum;
+
+            if (this.basemenuWindowMode == "expanded") {
+                size = portrait ? total - minimumMap : total / 3;
+            } else if (this.basemenuWindowMode == "normal") {
+                size = portrait ? total / 2 : minimum;
+            }
+
+            size = Math.max(minimum, Math.min(Math.round(size), total - minimumMap));
+            const property = wideLayout ? "--basemenu-width" : "--basemenu-height";
+            const unusedProperty = wideLayout ? "--basemenu-height" : "--basemenu-width";
+            editbar.style.removeProperty(unusedProperty);
             editbar.style.setProperty(property, `${size}px`);
-            map?.invalidateSize({ animate: false, pan: false, debounceMoveend: true });
+            updateResizeButton();
+            requestAnimationFrame(() => map?.invalidateSize({ animate: false, pan: false }));
         };
 
-        const finishDrag = () => {
-            if (!dragging) return;
-            dragging = false;
-            if (this.basemenuResizeFrame !== null) {
-                cancelAnimationFrame(this.basemenuResizeFrame);
-                applyDrag();
-            }
-            document.body.classList.remove("is-resizing-basemenu");
-            document.body.style.removeProperty("cursor");
-            map?.invalidateSize({ animate: false, pan: false });
-        };
-
-        handle.addEventListener("pointerdown", (event) => {
-            if (event.pointerType === "mouse" && event.button !== 0) return;
-            event.preventDefault();
-            dragging = true;
-            isWide = window.matchMedia("(min-width: 992px)").matches;
-            const rect = editbar.getBoundingClientRect();
-            requestedSize = isWide ? event.clientX - rect.left : event.clientY - rect.top;
-            document.body.classList.add("is-resizing-basemenu");
-            document.body.style.cursor = isWide ? "col-resize" : "row-resize";
+        minimizeButton.title = glot.get("basemenu_minimize");
+        minimizeButton.setAttribute("aria-label", glot.get("basemenu_minimize"));
+        minimizeButton.addEventListener("click", () => {
+            this.basemenuWindowMode = "minimized";
+            applyWindowSize();
         });
-
-        window.addEventListener("pointermove", (event) => {
-            if (!dragging) return;
-            event.preventDefault();
-            const rect = editbar.getBoundingClientRect();
-            requestedSize = isWide ? event.clientX - rect.left : event.clientY - rect.top;
-            if (this.basemenuResizeFrame === null) {
-                this.basemenuResizeFrame = requestAnimationFrame(applyDrag);
-            }
+        resizeButton.addEventListener("click", () => {
+            this.basemenuWindowMode = this.basemenuWindowMode == "expanded" ? "normal" : "expanded";
+            applyWindowSize();
         });
-
-        window.addEventListener("pointerup", finishDrag);
-        window.addEventListener("pointercancel", finishDrag);
-        this.basemenuResizeInitialized = true;
+        window.addEventListener("resize", applyWindowSize);
+        this.applyBasemenuWindowSize = applyWindowSize;
+        applyWindowSize();
+        this.basemenuWindowInitialized = true;
     }
 
     // 利用しているデータセットをCopyrightに反映
@@ -472,9 +482,13 @@ class MapMaker {
             for (let key of LayerCont.styles) {
                 if (Layers[key].geojson) {
                     winCont.modal_text(`Map Writeing... ${key}`, true);
-                    LayerCont.makeLayer(key);   // 指定したkeyレイヤーを作成
+                    await waitPaint();
+                    LayerCont.makeLayer(key, undefined, false);   // 指定したkeyレイヤーを作成
                 };
             };
+            winCont.modal_text("Map Ordering...", true);
+            await waitPaint();
+            LayerCont.applyDrawOrder();
             mapMaker.custom(true);
             winCont.closeModal().then(() => {
                 console.log("mapMaker: make: end");
@@ -660,6 +674,9 @@ class MapMaker {
                     } else {
                         document.getElementById(panel.groupGlot).classList.add("d-none");
                     }
+                    if (panel.groupGlot == "panelWaters") {
+                        document.getElementById("layerControlColumns").classList.toggle("d-none", !rems);
+                    }
                 }
                 customMap.classList.remove("d-none");          // Hide Custom Area
                 makeMap.classList.add("d-none");            // Hide MakeMap button
@@ -667,6 +684,7 @@ class MapMaker {
                 roughControls.classList.remove("d-none");  // Show Rough.js controls
                 this.rough_change();
                 saveMap.classList.remove("d-none");         // Show Save Button
+                requestAnimationFrame(() => this.applyBasemenuWindowSize?.());
                 //clearMap.classList.remove("d-none");           // Hide Clear Button
                 ["dragging", "zoomControl", "scrollWheelZoom", "touchZoom"].forEach(key => map[key].disable());
                 $("#search_input").attr('disabled', 'disabled');
@@ -690,6 +708,7 @@ class MapMaker {
                 saveMap.classList.add("d-none");            // Hide Save Button
                 //clearMap.classList.add("d-none");           // Hide Clear Button
                 customMap.classList.add("d-none");          // Hide Custom Area
+                requestAnimationFrame(() => this.applyBasemenuWindowSize?.());
                 map.doubleClickZoom.enable();
                 MapCont.start();
                 ["dragging", "zoomControl", "scrollWheelZoom", "touchZoom"].forEach(key => map[key].enable());
@@ -746,19 +765,17 @@ class MapMaker {
         const zoomGuidance = document.getElementById("morezoom");
         zoomGuidance.classList.toggle("d-none", nowzoom >= Conf.default.LimitZoomLevel);
         const featureList = document.getElementById("morezoomFeatures");
-        featureList.replaceChildren();
+        featureList.textContent = "";
         if (nowzoom < Conf.default.LimitZoomLevel) {
-            LayerCont.styles
+            const hiddenFeatures = LayerCont.styles
                 .filter(key => {
                     const zoom = Conf.style[LayerCont.palette][key].zoom;
                     return zoom > nowzoom && zoom <= Conf.default.LimitZoomLevel;
                 })
-                .sort((a, b) => Conf.style[LayerCont.palette][a].zoom - Conf.style[LayerCont.palette][b].zoom)
-                .forEach(key => {
-                    const item = document.createElement("li");
-                    item.textContent = glot.get(`menu_${key}`);
-                    featureList.appendChild(item);
-                });
+                .sort((a, b) => Conf.style[LayerCont.palette][a].zoom - Conf.style[LayerCont.palette][b].zoom);
+            const examples = hiddenFeatures.slice(0, 3).map(key => glot.get(`menu_${key}`));
+            if (hiddenFeatures.length > 3) examples.push(glot.get("morezoom_etc"));
+            featureList.textContent = `${glot.get("morezoom_example")} ${examples.join(" ")}`;
         }
         if (mapMaker.custom()) message += `<br>${glot.get("custommode")}`;
         $("#zoomlevel").html("<h2 class='zoom'>" + message + "</h2>");
