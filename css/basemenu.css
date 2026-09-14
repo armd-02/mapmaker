@@ -610,8 +610,20 @@ img.icon_normal {
     a.title {
         display: flex;
         align-items: center;
+        width: 100%;
         min-width: 0;
         margin-left: 8px;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    a.title span.title {
+        min-width: 0;
+        padding-right: 2px;
+        overflow: hidden;
+        font-size: 15px !important;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     a.title img,
