@@ -1,4 +1,14 @@
-<div id="basemenuResizeHandle" title="ドラッグしてサイズ変更" aria-label="ドラッグして基本メニューのサイズを変更"></div>
+<div class="basemenu-windowbar">
+    <span class="basemenu-windowbar-title" glot-model="basemenu_window_title"></span>
+    <div class="basemenu-window-controls">
+        <button type="button" id="basemenuMinimize" class="basemenu-window-button basemenu-minimize"
+            aria-label="最小化"></button>
+        <button type="button" id="basemenuResize" class="basemenu-window-button basemenu-resize"
+            aria-label="サイズ変更">
+            <span aria-hidden="true"></span>
+        </button>
+    </div>
+</div>
 
 <div class="container-fluid text-center m-0 p-1">
 
@@ -7,26 +17,26 @@
             <button class="btn btn-primary w-100" aria-describedby="morezoom" disabled onclick="mapMaker.make(Basic.getdate())">
                 <i class="fas fa-map me-2"></i><span glot-model="makemap" class="ms-2"></span>
             </button>
-            <div id="morezoom" class="small mt-2 d-none" role="status">
+            <div id="morezoom" class="small mt-2 text-center d-none" role="status">
                 <span glot-model="morezoom"></span>
-                <ul id="morezoomFeatures" class="text-start mb-0 mt-1 ps-4"></ul>
+                <span id="morezoomFeatures" class="mt-1"></span>
             </div>
         </div>
     </div>
 
     <div class="row row-cols-3 gx-0 mt-0" id="saveMap">
         <div class="col-4 p-1 m-0">
-            <button class="btn btn-secondary ps-0 pe-0 w-100" onclick="mapMaker.clearAll()">
+            <button class="btn btn-light ps-0 pe-0 w-100" onclick="mapMaker.clearAll()">
                 <i class="fas fa-undo me-2"></i>
             </button>
         </div>
         <div class="col-4 p-1 m-0">
-            <button class="btn btn-light ps-0 pe-0 w-100" onclick="mapMaker.save('png');">
+            <button class="btn btn-success ps-0 pe-0 w-100" onclick="mapMaker.save('png');">
                 <i class="fas fa-file-download me-2 flex-row"></i><span class="customName">PNG</span>
             </button>
         </div>
         <div class="col-4 p-1 m-0">
-            <button class="btn btn-light ps-0 pe-0 w-100" onclick="mapMaker.save('svg');">
+            <button class="btn btn-success ps-0 pe-0 w-100" onclick="mapMaker.save('svg');">
                 <i class="fas fa-file-download me-2 flex-row"></i><span class="customName">SVG</span>
             </button>
         </div>
@@ -109,9 +119,15 @@
                 </div>
             </div>
         </section>
+        <div id="layerControlColumns" class="layer-control-columns col-12 border-bottom d-none">
+            <span glot-model="layer_column_item"></span>
+            <span glot-model="layer_column_visibility"></span>
+            <span glot-model="layer_column_color"></span>
+            <span glot-model="layer_column_width"></span>
+        </div>
         <fieldset id="AAA" class="d-none">
             <div class="col border-0 border-bottom">
-                <div class="d-flex justify-content-between align-items-center">
+                <div class="layer-control-row align-items-center">
                     <span class="customName"></span>
                     <button id="AAA_layer" class="del_button me-1">
                         <i class="fas fa-trash-alt me-1"></i></button>

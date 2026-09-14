@@ -39,6 +39,38 @@
             ]
         }
     ],
+    "pointStyle": {
+        "tree": {
+            "radius": 1.2,
+            "palette": {
+                "color": {
+                    "lineColor": "#75a873",
+                    "fillColor": "#9fc89d",
+                    "width": 0
+                },
+                "mono": {
+                    "lineColor": "#777775",
+                    "fillColor": "#b8b8b5",
+                    "width": 0.3
+                }
+            }
+        },
+        "entrance": {
+            "radius": 0.6,
+            "palette": {
+                "color": {
+                    "lineColor": "#9f9892",
+                    "fillColor": "#cec5be",
+                    "width": 0.8
+                },
+                "mono": {
+                    "lineColor": "#777775",
+                    "fillColor": "#aaa9a6",
+                    "width": 0.8
+                }
+            }
+        }
+    },
     "style": {
         "color": {
             "background": {
@@ -63,6 +95,7 @@
                 "linecap": "round"
             },
             "waterArea": {
+                "drawOrder": 30,
                 "zoom": 11,
                 "type": "area",
                 "color": "#cfe5f2",
@@ -71,6 +104,7 @@
                 "linecap": "round"
             },
             "waterLine": {
+                "drawOrder": 40,
                 "zoom": 11,
                 "type": "line",
                 "color": "#cfe5f2",
@@ -87,6 +121,7 @@
                 "linecap": "round"
             },
             "site": {
+                "drawOrder": 25,
                 "zoom": 15,
                 "type": "area",
                 "color": "#f1e2b880",
@@ -122,7 +157,7 @@
                 "zoom": 11,
                 "type": "area",
                 "color": "#b9d8b5b3",
-                "width": 0.9,
+                "width": 0.1,
                 "dashArray": null,
                 "linecap": "round"
             },
@@ -146,12 +181,12 @@
                 "zoom": 11,
                 "type": "line",
                 "color": "#686866",
-                "width": 3,
+                "width": 1,
                 "dashArray": "0",
                 "linecap": "butt",
                 "overstyle": {
                     "color": "#f4f3f0",
-                    "width": 1.4,
+                    "width": 0.8,
                     "dashArray": "6 5",
                     "linecap": "butt"
                 }
@@ -198,7 +233,7 @@
             "highway_primary": {
                 "zoom": 12,
                 "type": "line",
-                "color": "#F6D76A",
+                "color": "#E8C96B",
                 "width": 5.0,
                 "dashArray": null,
                 "linecap": "round",
@@ -214,7 +249,7 @@
                 "zoom": 11,
                 "type": "line",
                 "color": "#eba985",
-                "width": 6.0,
+                "width": 5.0,
                 "dashArray": null,
                 "linecap": "round",
                 "overstyle": {
@@ -229,7 +264,7 @@
                 "zoom": 15,
                 "type": "area",
                 "color": "#cec5be",
-                "width": 0.7,
+                "width": 0.5,
                 "dashArray": null,
                 "linecap": "round",
                 "filter": {
@@ -249,7 +284,7 @@
                 "zoom": 14,
                 "type": "area",
                 "color": "#e7cdce",
-                "width": 1,
+                "width": 0.5,
                 "dashArray": null,
                 "linecap": "round"
             }
@@ -277,6 +312,7 @@
                 "linecap": "round"
             },
             "waterArea": {
+                "drawOrder": 30,
                 "zoom": 11,
                 "type": "line",
                 "color": "#b8b8b5",
@@ -285,6 +321,7 @@
                 "linecap": "round"
             },
             "waterLine": {
+                "drawOrder": 40,
                 "zoom": 11,
                 "type": "line",
                 "color": "#b8b8b5",
@@ -301,6 +338,7 @@
                 "linecap": "round"
             },
             "site": {
+                "drawOrder": 25,
                 "zoom": 15,
                 "type": "area",
                 "color": "#e4e4df",
@@ -344,7 +382,7 @@
                 "zoom": 11,
                 "type": "line",
                 "color": "#969694",
-                "width": 1,
+                "width": 0.8,
                 "dashArray": null,
                 "linecap": "round"
             },

@@ -93,7 +93,7 @@
         <!-- タイトルメニュー（固定） -->
         <header class="border-bottom">
             <div class="row g-0 align-items-center">
-                <div class="col-7 p-0 h-100">
+                <div class="col-6 col-lg-7 p-0 h-100">
                     <div class="d-flex">
                         <a class="title title d-flex align-items-center text-decoration-none"
                             href="javascript:mapMaker.licence()">
@@ -106,7 +106,7 @@
                     <div>
                     </div>
                 </div>
-                <div class="col-5 p-0 pe-1 d-flex flex-row-reverse h-100 align-items-center">
+                <div class="col-6 col-lg-5 p-0 pe-1 d-flex flex-row-reverse h-100 align-items-center">
                     <button type="button" class="btn btn-sm float-right menu ms-2" data-bs-toggle="dropdown"
                         aria-expanded="true">
                         <i class="fas fa-bars fa"></i></button>
@@ -115,9 +115,11 @@
                         <span class="dropdown-item"></span>
                         <div class="dropdown-divider"></div>
                     </div>
-                    <button class='btn btn-light ps-2 pe-2 pt-1 pb-1 text-nowrap'
-                        onclick='mapMaker.searchPoi(search_input.value)'></button>
-                    <input type='search' id='search_input' class='form-control w-75 h-75 me-2'></input>
+                    <button type="button" class="btn btn-light address-search-button"
+                        onclick="mapMaker.searchPoi(search_input.value)">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                    </button>
+                    <input type='search' id='search_input' class='form-control flex-grow-1 h-75 me-2'></input>
                 </div>
             </div>
         </header>

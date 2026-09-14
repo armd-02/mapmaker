@@ -55,13 +55,21 @@
         "ja": "ズームレベル：",
         "en": "Zoom Level: "
     },
-    "resize_basemenu_title": {
-        "ja": "ドラッグしてサイズ変更",
-        "en": "Drag to resize"
+    "basemenu_window_title": {
+        "ja": "編集メニュー",
+        "en": "Edit menu"
     },
-    "resize_basemenu": {
-        "ja": "ドラッグして基本メニューのサイズを変更",
-        "en": "Drag to resize the main menu"
+    "basemenu_minimize": {
+        "ja": "最小化",
+        "en": "Minimize"
+    },
+    "basemenu_expand": {
+        "ja": "拡大",
+        "en": "Expand"
+    },
+    "basemenu_restore": {
+        "ja": "元のサイズに戻す",
+        "en": "Restore size"
     },
     "selectdate": {
         "ja": "（実験）日付指定：",
@@ -94,6 +102,14 @@
     "morezoom": {
         "ja": "もっとズームすると地物が増えます。",
         "en": "Zoom in more to see additional features."
+    },
+    "morezoom_example": {
+        "ja": "例:",
+        "en": "Examples:"
+    },
+    "morezoom_etc": {
+        "ja": "など",
+        "en": "and more"
     },
     "custommode": {
         "ja": "編集中（ロック）",
@@ -150,6 +166,10 @@
     "loading_message": {
         "ja": "サーバーからダウンロード中です。しばらくお待ちください。",
         "en": "Loading... Please wait a moment."
+    },
+    "processing_message": {
+        "ja": "処理中です。しばらくお待ちください。",
+        "en": "Processing... Please wait a moment."
     },
     "export_processing": {
         "ja": "ダウンロードデータを作成中です。しばらくお待ちください。",
@@ -278,6 +298,22 @@
     "panelWaters": {
         "ja": "水系",
         "en": "Water"
+    },
+    "layer_column_item": {
+        "ja": "項目",
+        "en": "Item"
+    },
+    "layer_column_visibility": {
+        "ja": "表示",
+        "en": "Show"
+    },
+    "layer_column_color": {
+        "ja": "色",
+        "en": "Color"
+    },
+    "layer_column_width": {
+        "ja": "線幅",
+        "en": "Width"
     },
     "panel": {
         "ja": "土地利用",
